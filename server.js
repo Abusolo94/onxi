@@ -5,7 +5,19 @@ const sunRouter = require("./routes/Routs");
 
 const app = express();
 
-app.use(cors({ origin: "*" }));
+// app.use(cors({ origin: "*" }));
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://onxi-48735.web.app",
+    ],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 app.use(express.json()); // move express.json() here globally
 
 // Mount the router
